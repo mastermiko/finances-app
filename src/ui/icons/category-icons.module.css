@@ -1,0 +1,51 @@
+.icon,
+.swatch {
+  background: var(--c-light);
+  color: var(--g-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .icon,
+  :root:not([data-theme='light']) .swatch {
+    background: var(--c-dark);
+    color: var(--g-dark);
+  }
+}
+
+:root[data-theme='dark'] .icon,
+:root[data-theme='dark'] .swatch {
+  background: var(--c-dark);
+  color: var(--g-dark);
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.sm {
+  width: 28px;
+  height: 28px;
+}
+
+.sm svg {
+  width: 15px;
+  height: 15px;
+}
+
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex: none;
+}

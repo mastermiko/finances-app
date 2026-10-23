@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck && pnpm run test
+      - run: pnpm run build
+      - run: pnpm run sbom
+      - run: pnpm run build-storybook
+      # "Version d'origine": a blank, versioned build as a .zip with SHA-256 sums
+      - run: pnpm run package:zip
+      - uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            dist-zip/*.zip
+            dist-zip/SHA256SUMS.txt
+            dist/sbom.cdx.json
+          generate_release_notes: true

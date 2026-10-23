@@ -1,0 +1,123 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--target-min);
+  padding: 0 var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-weight: var(--weight-semibold);
+  font-size: var(--font-size-md);
+  line-height: 1.2;
+  padding-block: var(--space-2);
+  text-decoration: none;
+  text-align: center;
+  max-width: 100%;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.button svg {
+  flex: none;
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.primary {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+.primary:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+.secondary {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border-color: var(--color-line-strong);
+}
+.secondary:hover:not(:disabled) {
+  background: var(--color-surface-sunken);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-accent);
+}
+.ghost:hover:not(:disabled) {
+  background: var(--color-accent-soft);
+}
+
+.danger {
+  background: var(--color-danger);
+  color: var(--color-ink-inverse);
+}
+.danger:hover:not(:disabled) {
+  filter: brightness(0.92);
+}
+
+.small {
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+/* Small visual size keeps a 44 px hit area through a pseudo-element */
+.small {
+  position: relative;
+}
+.small::after {
+  content: '';
+  position: absolute;
+  inset: -4px 0;
+}
+
+.block {
+  width: 100%;
+}
+
+.button:disabled {
+  opacity: 0.55;
+}
+
+.spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.iconButton {
+  display: inline-grid;
+  place-items: center;
+  width: var(--target-min);
+  height: var(--target-min);
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-ink-secondary);
+}
+.iconButton:hover:not(:disabled) {
+  background: var(--color-surface-sunken);
+  color: var(--color-ink);
+}
+.iconButton svg {
+  width: 22px;
+  height: 22px;
+}
+.iconButton[aria-pressed='true'],
+.iconButton[aria-expanded='true'] {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}

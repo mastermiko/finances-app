@@ -1,0 +1,11 @@
+.lighthouseci
+coverage
+dist
+dist-zip
+docs/export-format.schema.json
+e2e/.data
+playwright-report
+pnpm-lock.yaml
+src/test/fixtures/*.xlsx
+storybook-static
+test-results

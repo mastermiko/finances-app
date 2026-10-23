@@ -1,0 +1,331 @@
+/* Amounts */
+.amount {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  font-weight: var(--weight-semibold);
+}
+
+.amount svg {
+  width: 0.95em;
+  height: 0.95em;
+  flex: none;
+}
+
+.income {
+  color: var(--color-income);
+}
+
+.expense {
+  color: var(--color-expense);
+}
+
+.transfer {
+  color: var(--color-transfer);
+}
+
+.planned {
+  opacity: 0.75;
+  font-style: italic;
+}
+
+/* Gauge (role=meter) */
+.gauge {
+  position: relative;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-sunken);
+  overflow: hidden;
+}
+
+.gaugeFill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  transition: width var(--duration-medium) var(--ease-out);
+}
+
+.gauge[data-level='warn'] .gaugeFill {
+  background: var(--color-warn-fill);
+}
+
+.gauge[data-level='over'] .gaugeFill {
+  background: var(--color-danger);
+}
+
+.gaugeMarker {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  background: var(--color-ink);
+  border-radius: 1px;
+}
+
+@media (forced-colors: active) {
+  .gaugeFill {
+    background: Highlight !important;
+  }
+  .gauge {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* Category dot */
+.catIcon {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.catIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.catIconSm {
+  width: 28px;
+  height: 28px;
+}
+
+.catIconSm svg {
+  width: 15px;
+  height: 15px;
+}
+
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex: none;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: var(--weight-semibold);
+  background: var(--color-surface-sunken);
+  color: var(--color-ink-secondary);
+  max-width: 100%;
+}
+
+.badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.badgeAccent {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.badgeWarn {
+  background: var(--color-warn-soft);
+  color: var(--color-warn);
+}
+
+.badgeDanger {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+}
+
+.badgeOk {
+  background: var(--color-ok-soft);
+  color: var(--color-ok);
+}
+
+/* Empty state */
+.empty {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-4);
+  max-width: 52ch;
+}
+
+.emptyCentered {
+  justify-items: center;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.emptyIcon {
+  width: 40px;
+  height: 40px;
+  color: var(--color-ink-muted);
+}
+
+.emptyTitle {
+  font-size: var(--font-size-lg);
+}
+
+.emptyText {
+  color: var(--color-ink-secondary);
+}
+
+.emptyActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* Skeleton */
+.skeleton {
+  display: block;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-sunken),
+    var(--color-line),
+    var(--color-surface-sunken)
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Toggletip */
+.tipWrap {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.tipButton {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-ink-muted);
+}
+
+.tipButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.tipButton::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+}
+
+.tipBubble {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: min(300px, 80vw);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--color-ink);
+  color: var(--color-ink-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: var(--weight-regular);
+  box-shadow: var(--shadow-overlay);
+}
+
+/* Section */
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: var(--target-min);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-lg);
+}
+
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: var(--space-1);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--color-line);
+  scrollbar-width: none;
+}
+
+.tab {
+  flex: none;
+  min-height: var(--target-min);
+  padding: 0 var(--space-3);
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: none;
+  color: var(--color-ink-secondary);
+  font-weight: var(--weight-semibold);
+}
+
+.tab[aria-selected='true'] {
+  color: var(--color-ink);
+  border-bottom-color: var(--color-accent);
+}
+
+/* Month switcher */
+.month {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.monthLabel {
+  min-width: 9.5em;
+  text-align: center;
+  font-size: var(--font-size-lg);
+  font-weight: var(--weight-semibold);
+}
+
+.monthLabelButton {
+  composes: monthLabel;
+  min-height: var(--target-min);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  padding: 0 var(--space-2);
+}
+
+.monthLabelButton:hover {
+  background: var(--color-surface-sunken);
+}

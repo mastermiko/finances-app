@@ -1,0 +1,233 @@
+.shell {
+  min-height: 100dvh;
+}
+
+.main {
+  padding: var(--space-4) var(--space-4)
+    calc(var(--nav-height) + var(--space-12) + env(safe-area-inset-bottom));
+  max-width: var(--content-max);
+  margin-inline: auto;
+  outline: none;
+}
+
+/* Bottom navigation (phones) */
+.nav {
+  position: fixed;
+  z-index: 30;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(var(--nav-height) + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+}
+
+.navList {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: var(--nav-height);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 100%;
+  min-width: var(--target-min);
+  color: var(--color-ink-secondary);
+  text-decoration: none;
+  font-size: 0.6875rem;
+  font-weight: var(--weight-semibold);
+}
+
+.navLink svg {
+  width: 22px;
+  height: 22px;
+}
+
+.navLink[aria-current='page'],
+.navLink[data-status='active'] {
+  color: var(--color-accent);
+}
+
+.navLabel {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-inline: 2px;
+}
+
+.brand {
+  display: none;
+}
+
+.sideAdd {
+  display: none;
+}
+
+/* Floating add button */
+.fab {
+  position: fixed;
+  z-index: 31;
+  right: var(--space-4);
+  bottom: calc(var(--nav-height) + var(--space-4) + env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 56px;
+  padding: 0 var(--space-5) 0 var(--space-4);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-weight: var(--weight-bold);
+  box-shadow: var(--shadow-overlay);
+}
+
+.fab svg {
+  width: 24px;
+  height: 24px;
+}
+
+.fab:hover {
+  background: var(--color-accent-hover);
+}
+
+.kbd {
+  display: none;
+}
+
+/* Sidebar (≥ 1024 px) */
+@media (min-width: 1024px) {
+  .shell {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    padding: var(--space-5) var(--space-3);
+    border-top: 0;
+    border-right: 1px solid var(--color-line);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0 var(--space-3);
+    font-size: var(--font-size-lg);
+    font-weight: var(--weight-bold);
+    color: var(--color-ink);
+  }
+
+  .brand svg {
+    width: 28px;
+    height: 28px;
+    color: var(--color-accent);
+  }
+
+  .sideAdd {
+    display: flex;
+  }
+
+  .navList {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: var(--space-1);
+  }
+
+  .navLink {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--space-3);
+    min-height: var(--target-min);
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-md);
+  }
+
+  .navLink:hover {
+    background: var(--color-surface-sunken);
+    color: var(--color-ink);
+  }
+
+  .navLink[data-status='active'] {
+    background: var(--color-accent-soft);
+  }
+
+  .fab {
+    display: none;
+  }
+
+  .main {
+    padding: var(--space-6) var(--space-8) var(--space-12);
+    width: 100%;
+  }
+
+  .kbd {
+    display: inline;
+    margin-left: auto;
+    padding: 0 var(--space-1);
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    font-size: var(--font-size-xs);
+    opacity: 0.8;
+  }
+}
+
+.banner {
+  position: fixed;
+  z-index: 70;
+  top: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  width: min(560px, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-overlay);
+}
+
+.banner p {
+  flex: 1 1 200px;
+}
+
+.pageHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.pageTitle {
+  font-size: var(--font-size-2xl);
+  letter-spacing: -0.01em;
+}
+
+.pageActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}

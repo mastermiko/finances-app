@@ -1,0 +1,110 @@
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 64px;
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  text-align: left;
+  touch-action: pan-y;
+}
+
+.row:hover {
+  background: var(--color-surface-sunken);
+}
+
+.selected {
+  background: var(--color-accent-soft);
+}
+
+.selected:hover {
+  background: var(--color-accent-soft);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: var(--weight-medium);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-muted);
+}
+
+.amount {
+  flex: none;
+  text-align: right;
+}
+
+.check {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  accent-color: var(--color-accent);
+}
+
+.openButton {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: 0;
+  background: transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.row > :not(.openButton) {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.row > .check,
+.row > .menu {
+  pointer-events: auto;
+}
+
+.menu {
+  flex: none;
+}
+
+.swipeHint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-danger);
+  color: var(--color-ink-inverse);
+  font-weight: var(--weight-semibold);
+}
+
+.swipeHintDuplicate {
+  justify-content: flex-start;
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.swipeWrap {
+  position: relative;
+  border-radius: var(--radius-md);
+}

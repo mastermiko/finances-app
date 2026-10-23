@@ -1,0 +1,87 @@
+.intro {
+  margin-bottom: var(--space-5);
+  color: var(--color-ink-secondary);
+  max-width: 70ch;
+}
+
+.list {
+  display: grid;
+  margin: 0;
+}
+
+.list > li {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.list > li:last-child {
+  border-bottom: 0;
+}
+
+.child {
+  padding-left: var(--space-6) !important;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2);
+}
+
+.rowHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.name {
+  flex: 1 1 8rem;
+  font-weight: var(--weight-semibold);
+}
+
+.inputWrap {
+  position: relative;
+  width: 9.5rem;
+}
+
+.input {
+  text-align: right;
+  padding-right: var(--space-8) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.currency {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-ink-muted);
+  pointer-events: none;
+}
+
+.rowFoot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.remaining {
+  color: var(--color-ink);
+  font-weight: var(--weight-semibold);
+}
+
+.total {
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.error {
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+}

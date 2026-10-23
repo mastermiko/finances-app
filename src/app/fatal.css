@@ -1,0 +1,37 @@
+.fatal {
+  max-width: 60ch;
+  margin: 10vh auto;
+  padding: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.fatal h1 {
+  font-size: var(--font-size-xl);
+}
+
+.fatal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.fatal button {
+  min-height: var(--target-min);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-surface);
+  font-weight: var(--weight-semibold);
+}
+
+.fatal button:first-child {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  border-color: var(--color-accent);
+}
+
+.fatal pre {
+  white-space: pre-wrap;
+  font-size: var(--font-size-sm);
+}

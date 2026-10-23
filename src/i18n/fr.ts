@@ -1,0 +1,942 @@
+/**
+ * French catalogue (default language). ICU MessageFormat.
+ * Keys are stable identifiers; en.ts must define exactly the same keys (type-checked).
+ */
+export const fr = {
+  // App & navigation
+  'app.name': 'Finances',
+  'nav.label': 'Navigation principale',
+  'nav.dashboard': 'Tableau de bord',
+  'nav.operations': 'Opérations',
+  'nav.budget': 'Budget',
+  'nav.analytics': 'Analyses',
+  'nav.settings': 'Paramètres',
+  'a11y.skipToContent': 'Aller au contenu',
+  'a11y.notifications': 'Notifications',
+  'update.available': 'Une nouvelle version est prête.',
+  'update.later': 'Plus tard',
+  'update.reload': 'Recharger',
+  'notFound.title': 'Page introuvable',
+  'notFound.text': 'Cette adresse ne correspond à aucun écran.',
+  'notFound.back': 'Retour au tableau de bord',
+  'account.default': 'Compte courant',
+
+  // Common
+  'common.cancel': 'Annuler',
+  'common.close': 'Fermer',
+  'common.save': 'Enregistrer',
+  'common.delete': 'Supprimer',
+  'common.edit': 'Modifier',
+  'common.duplicate': 'Dupliquer',
+  'common.undo': 'Annuler',
+  'common.optional': '(facultatif)',
+  'common.editItem': 'Modifier « {name} »',
+  'common.deleteItem': 'Supprimer « {name} »',
+  'common.previousMonth': 'Mois précédent',
+  'common.nextMonth': 'Mois suivant',
+  'confirm.typeWord': 'Saisissez {word} pour confirmer',
+  'keys.n': 'N',
+  'keys.e': 'E',
+  'keys.enter': 'Entrée',
+  'keys.ctrlEnter': 'Ctrl + Entrée',
+  'keys.escape': 'Échap',
+  'keys.delete': 'Suppr',
+  'keys.arrows': '← →',
+
+  // Kinds & statuses
+  'kind.expense': 'Dépense',
+  'kind.income': 'Revenu',
+  'kind.transfer': 'Virement',
+  'status.cleared': 'Validée',
+  'status.planned': 'Prévue',
+  'category.none': 'Sans catégorie',
+  'category.uncategorized': 'À classer',
+
+  // Toasts
+  'toast.saved': 'Opération enregistrée : {amount}',
+  'toast.updated': 'Opération modifiée',
+  'toast.deleted':
+    '{count, plural, one {# opération supprimée} other {# opérations supprimées}}. Restaurable depuis la corbeille pendant 30 jours.',
+  'toast.restored': '{count, plural, one {# opération restaurée} other {# opérations restaurées}}',
+  'toast.duplicated': '{count, plural, one {Opération dupliquée} other {# opérations dupliquées}}',
+  'toast.confirmed': '{count, plural, one {# opération validée} other {# opérations validées}}',
+  'toast.recategorized':
+    '{count, plural, one {# opération classée} other {# opérations classées}} dans « {name} »',
+  'toast.tagged': 'Tag #{name} ajouté à {count, plural, one {# opération} other {# opérations}}',
+  'error.actionFailed':
+    'L’action n’a pas pu être enregistrée. Réessayez ; si le problème persiste, exportez vos données depuis Paramètres.',
+
+  // Entry
+  'entry.new': 'Nouvelle opération',
+  'entry.add': 'Ajouter',
+  'entry.newTitle': 'Nouvelle opération',
+  'entry.editTitle': 'Modifier l’opération',
+  'entry.kind': 'Type d’opération',
+  'entry.amount': 'Montant',
+  'entry.amountHint': 'Calcul possible : 12,5+3 · 6x15 · -(10+5,3)',
+  'entry.amountPlaceholder': '0,00',
+  'entry.operators': 'Opérateurs de calcul',
+  'entry.insertOperator': 'Insérer {op}',
+  'entry.result': 'Résultat : {amount}',
+  'entry.label': 'Libellé',
+  'entry.suggestions': 'Libellés déjà utilisés',
+  'entry.category': 'Catégorie',
+  'entry.categories.all': 'Toutes les catégories ({count})',
+  'entry.categories.less': 'Afficher moins',
+  'entry.date': 'Date',
+  'entry.period': 'Mois concerné',
+  'entry.periodHint': 'Charge sans date : comptée dans ce mois, affichée en tête de liste.',
+  'entry.today': 'Aujourd’hui',
+  'entry.yesterday': 'Hier',
+  'entry.undated': 'Sans date',
+  'entry.account': 'Compte',
+  'entry.fromAccount': 'Depuis le compte',
+  'entry.toAccount': 'Vers le compte',
+  'entry.chooseAccount': 'Choisir un compte',
+  'entry.moreOptions': 'Note, tags et options',
+  'entry.note': 'Note',
+  'entry.tags': 'Tags',
+  'entry.newTag': 'Nouveau tag + Entrée',
+  'entry.refund': 'Remboursement (montant positif dans une catégorie de dépense)',
+  'entry.incomeCorrection': 'Correction de revenu (montant négatif)',
+  'entry.planned': 'Opération prévue (non comptée dans les soldes réels)',
+  'entry.saveAndNew': 'Enregistrer et nouveau',
+  'entry.draftRestored': 'Brouillon restauré.',
+  'entry.draftDiscard': 'Effacer',
+  'entry.error.amountInvalid': 'Montant invalide. Exemples acceptés : 12,50 ou 6x15.',
+  'entry.error.amountEmpty': 'Saisissez un montant. Exemples acceptés : 12,50 ou 6x15.',
+  'entry.error.amountZero': 'Le montant doit être différent de zéro.',
+  'entry.error.divisionByZero': 'Division par zéro. Corrigez le calcul.',
+  'entry.error.parentheses': 'Parenthèses non fermées. Exemple accepté : -(10+5,3).',
+  'entry.error.outOfRange': 'Montant trop élevé.',
+  'entry.error.categoryRequired': 'Choisissez une catégorie.',
+  'entry.error.date': 'Date invalide. Choisissez une date ou « Sans date ».',
+  'entry.error.toAccount': 'Choisissez le compte de destination.',
+  'entry.error.sameAccount': 'Les deux comptes doivent être différents.',
+
+  // Operation display
+  'operation.undated': 'Sans date',
+  'operation.planned': 'Prévue',
+  'operation.refund': 'Remboursement',
+  'operation.transferTo': 'Virement · {account}',
+
+  // Operations screen
+  'operations.title': 'Opérations',
+  'operations.search': 'Rechercher',
+  'operations.searchPlaceholder': 'Rechercher un libellé ou une note',
+  'operations.period': 'Période',
+  'operations.preset.month': 'Un mois',
+  'operations.preset.previous': 'Mois précédent',
+  'operations.preset.last3': '3 derniers mois',
+  'operations.preset.year': 'Cette année',
+  'operations.preset.all': 'Tout l’historique',
+  'operations.preset.custom': 'Période personnalisée',
+  'operations.filters': 'Filtres',
+  'operations.activeFilters': 'Filtres actifs',
+  'operations.removeFilter': 'Retirer le filtre {name}',
+  'operations.clearFilters': 'Effacer les filtres',
+  'operations.count':
+    '{count, plural, =0 {Aucune opération} one {# opération} other {# opérations}}',
+  'operations.total': 'Total de la sélection :',
+  'operations.totalDetail': 'revenus {income} · dépenses {expense}',
+  'operations.sortAsc': 'Trier par ordre chronologique',
+  'operations.sortDesc': 'Trier du plus récent au plus ancien',
+  'operations.selectStart': 'Sélectionner plusieurs opérations',
+  'operations.selectStop': 'Terminer la sélection',
+  'operations.selectOne': 'Sélectionner « {label} »',
+  'operations.selectAll': 'Tout sélectionner',
+  'operations.selected':
+    '{count, plural, =0 {Aucune opération sélectionnée} one {# sélectionnée} other {# sélectionnées}}',
+  'operations.bulkActions': 'Actions sur la sélection',
+  'operations.recategorize': 'Changer de catégorie',
+  'operations.recategorizeTitle':
+    'Nouvelle catégorie pour {count, plural, one {# opération} other {# opérations}}',
+  'operations.apply': 'Appliquer',
+  'operations.addTag': 'Ajouter un tag',
+  'operations.addTagTitle': 'Ajouter un tag',
+  'operations.noTags':
+    'Aucun tag. Créez-en un depuis Paramètres › Tags ou dans le formulaire de saisie.',
+  'operations.confirm': 'Valider les prévues',
+  'operations.exportCsv': 'Exporter la sélection (CSV)',
+  'operations.listLabel': 'Liste des opérations',
+  'operations.undatedGroup': 'Charges sans date',
+  'operations.open': '{label}, {amount}',
+  'operations.actionsFor': 'Actions pour « {label} »',
+  'operations.detail': 'Détail de l’opération',
+  'operations.empty.title': 'Aucune opération pour l’instant',
+  'operations.empty.text':
+    'Saisissez une dépense ou importez votre classeur Excel pour retrouver tout votre historique.',
+  'operations.noMatch.title': 'Aucune opération ne correspond',
+  'operations.noMatch.text': 'Modifiez la période, la recherche ou les filtres.',
+  'empty.firstOperation': 'Saisir ma première opération',
+  'empty.importWorkbook': 'Importer mon classeur',
+
+  // Detail
+  'detail.date': 'Date',
+  'detail.period': 'Mois budgétaire',
+  'detail.kind': 'Type',
+  'detail.account': 'Compte',
+  'detail.status': 'Statut',
+  'detail.expression': 'Calcul saisi',
+  'detail.tags': 'Tags',
+  'detail.import': 'Importée de',
+  'detail.updated': 'Modifiée le',
+
+  // Filters
+  'filters.title': 'Filtres',
+  'filters.reset': 'Tout effacer',
+  'filters.apply': 'Afficher les résultats',
+  'filters.period': 'Période',
+  'filters.from': 'Du mois',
+  'filters.to': 'Au mois',
+  'filters.any': 'Indifférent',
+  'filters.undatedOnly': 'Charges sans date uniquement',
+  'filters.kind': 'Type et statut',
+  'filters.categories': 'Catégories',
+  'filters.accounts': 'Comptes',
+  'filters.tags': 'Tags',
+  'filters.amount': 'Montant (valeur absolue)',
+  'filters.min': 'Minimum',
+  'filters.max': 'Maximum',
+  'filters.minChip': '≥ {amount}',
+  'filters.maxChip': '≤ {amount}',
+  'filters.allAccounts': 'Tous les comptes',
+  'filters.allCategories': 'Toutes les catégories',
+
+  // Dashboard
+  'dashboard.title': 'Tableau de bord',
+  'dashboard.backToCurrent': 'Revenir au mois en cours',
+  'dashboard.remaining': 'Reste du budget',
+  'dashboard.closingBalance': 'Solde fin de mois (report inclus)',
+  'dashboard.openingBalance': 'Report du mois précédent',
+  'dashboard.gaugeLabel': 'Budget consommé',
+  'dashboard.spentOf': '{spent} dépensés sur {total}',
+  'dashboard.dayOf': 'Jour {day} sur {total}',
+  'dashboard.carry': 'Report : {amount}',
+  'dashboard.noBudget': 'Aucun budget défini pour ce mois.',
+  'dashboard.setBudget': 'Définir un budget',
+  'dashboard.forecast':
+    'Prévision de fin de mois : {amount} (récurrences à venir et moyenne des dépenses variables sur 3 mois)',
+  'dashboard.income': 'Revenus',
+  'dashboard.expenses': 'Dépenses',
+  'dashboard.result': 'Résultat du mois',
+  'dashboard.alerts': 'À traiter',
+  'dashboard.alert.over': '{name} : budget dépassé ({percent}). Reste {remaining}.',
+  'dashboard.alert.warn': '{name} : {percent} du budget consommé. Reste {remaining}.',
+  'dashboard.alert.planned':
+    '{count, plural, one {# opération prévue est arrivée à échéance} other {# opérations prévues sont arrivées à échéance}}.',
+  'dashboard.alert.confirmAll': 'Tout valider',
+  'dashboard.alert.noBackup':
+    'Aucune sauvegarde exportée. Vos données n’existent que dans ce navigateur.',
+  'dashboard.alert.oldBackup':
+    'Dernière sauvegarde exportée il y a {days, plural, one {# jour} other {# jours}}.',
+  'dashboard.alert.exportNow': 'Exporter maintenant',
+  'dashboard.alert.storage':
+    'Stockage du navigateur utilisé à {percent}. Exportez vos données et videz la corbeille.',
+  'dashboard.byCategory': 'Dépenses par catégorie',
+  'dashboard.manageBudget': 'Gérer le budget',
+  'dashboard.noExpense': 'Aucune dépense ce mois-ci.',
+  'dashboard.budgetLeft': 'Reste {remaining} sur {total}',
+  'dashboard.latest': 'Dernières opérations',
+  'dashboard.seeAll': 'Tout voir',
+  'dashboard.noOperation': 'Aucune opération ce mois-ci.',
+  'dashboard.accounts': 'Comptes',
+  'dashboard.totalBalance': 'Solde total',
+  'dashboard.goals': 'Objectifs d’épargne',
+  'dashboard.welcome.title': 'Vos finances, sur cet appareil uniquement',
+  'dashboard.welcome.text':
+    'Importez votre classeur Finances.xlsm pour reprendre tout votre historique, ou commencez par saisir une dépense.',
+  'dashboard.welcome.storage':
+    'Les données sont stockées dans ce navigateur, sans compte ni serveur. Le navigateur peut les effacer (navigation privée, nettoyage) : exportez une sauvegarde régulièrement depuis Paramètres.',
+
+  // Budget
+  'budget.title': 'Budget',
+  'budget.intro':
+    'Fixez une enveloppe globale et des enveloppes par catégorie. Les dépenses du mois sont déduites automatiquement.',
+  'budget.helpLabel': 'Aide sur le budget',
+  'budget.help':
+    'Avec le report activé, ce qui reste (ou manque) d’un mois s’ajoute au mois suivant. Une enveloppe définie un mois est reconduite les mois suivants tant que vous ne la changez pas (réglable dans Paramètres › Général).',
+  'budget.globalTitle': 'Enveloppe globale',
+  'budget.global': 'Budget global',
+  'budget.categoriesTitle': 'Par catégorie',
+  'budget.totals': 'Enveloppes {envelopes} · dépensé {spent}',
+  'budget.copyPrevious': 'Copier le mois précédent',
+  'budget.copied':
+    '{count, plural, =0 {Aucune enveloppe à copier} one {# enveloppe copiée} other {# enveloppes copiées}}',
+  'budget.inherited': 'Reconduit depuis {month}',
+  'budget.spent': 'Dépensé : {amount}',
+  'budget.carry': 'report {amount}',
+  'budget.remaining': 'Reste',
+  'budget.rollover': 'Reporter le solde sur le mois suivant',
+  'budget.rolloverHint': 'Le reste (ou le dépassement) s’ajoute à l’enveloppe du mois suivant.',
+  'budget.gaugeLabel': 'Budget {name}',
+  'budget.alert.warn': '{name} : 80 % du budget atteint.',
+  'budget.alert.over': '{name} : budget dépassé.',
+
+  // Analytics
+  'analytics.title': 'Analyses',
+  'analytics.until': 'Jusqu’à {month}',
+  'analytics.tab.evolution': 'Évolution',
+  'analytics.tab.compare': 'Comparaison',
+  'analytics.tab.flows': 'Revenus et dépenses',
+  'analytics.tab.year': 'Vue annuelle',
+  'analytics.tab.labels': 'Top libellés',
+  'analytics.tab.tags': 'Tags',
+  'analytics.showData': 'Données',
+  'analytics.png': 'PNG',
+  'analytics.csv': 'CSV',
+  'analytics.exportPngLabel': 'Exporter « {title} » en PNG',
+  'analytics.exportCsvLabel': 'Exporter les données de « {title} » en CSV',
+  'analytics.dataOf': 'Données de « {title} »',
+  'analytics.empty.title': 'Pas encore de données à analyser',
+  'analytics.empty.text':
+    'Les graphiques apparaissent dès les premières opérations saisies ou importées.',
+  'analytics.evolution.title': 'Dépenses par catégorie sur 12 mois',
+  'analytics.evolution.description':
+    'Barres empilées des dépenses mensuelles par catégorie, de {from} à {to}.',
+  'analytics.compare.title': 'Mois en cours, mois précédent et moyenne sur 3 mois',
+  'analytics.compare.lead':
+    '{month} : {current} de dépenses, contre {previous} le mois précédent et {average} en moyenne sur les 3 mois précédents.',
+  'analytics.average3': 'Moyenne 3 mois',
+  'analytics.flows.title': 'Revenus et dépenses par mois',
+  'analytics.flows.lead': 'Sur 12 mois : résultat {result}, taux d’épargne {rate}.',
+  'analytics.savingsRate': 'Taux d’épargne',
+  'analytics.year.title': 'Année {year}',
+  'analytics.year.select': 'Année',
+  'analytics.labels.title': 'Libellés les plus coûteux, de {from} à {to}',
+  'analytics.tags.select': 'Tag',
+  'analytics.tags.title': 'Montant net du tag #{name} par mois',
+  'analytics.tags.total': '#{name} sur 12 mois : {total}, soit {average} par mois en moyenne.',
+  'analytics.tags.emptyTitle': 'Aucun tag',
+  'analytics.tags.emptyText':
+    'Créez un tag (par exemple « café ») et une règle pour suivre un poste transversal.',
+  'analytics.col.month': 'Mois',
+  'analytics.col.category': 'Catégorie',
+  'analytics.col.total': 'Total',
+  'analytics.col.count': 'Nombre',
+  'analytics.col.vsPrevious': 'Écart vs mois précédent',
+  'analytics.col.vsAverage': 'Écart vs moyenne',
+
+  // Import
+  'import.title': 'Importer des données',
+  'import.drop': 'Glissez un fichier ici ou choisissez-le',
+  'import.formats':
+    'Classeur Finances (.xlsm, .xlsx), sauvegarde (.json, .enc), relevé bancaire (.csv, .ofx, .qfx, .qif). 20 Mo maximum, 100 Mo pour une sauvegarde.',
+  'import.choose': 'Choisir un fichier',
+  'import.reading': 'Lecture du fichier…',
+  'import.privacy':
+    'Le fichier est lu dans ce navigateur. Rien n’est envoyé sur Internet. Les macros et les formules du classeur ne sont jamais exécutées.',
+  'import.error.tooLarge':
+    'Fichier trop volumineux (20 Mo maximum, 100 Mo pour une sauvegarde de l’application).',
+  'import.error.unsupported':
+    'Format non pris en charge. Formats acceptés : .xlsm, .xlsx, .json, .enc, .csv, .ofx, .qfx, .qif.',
+  'import.error.notWorkbook': 'Ce fichier n’est pas un classeur Excel valide.',
+  'import.error.noMonthlySheet':
+    'Aucun onglet mensuel trouvé. Les onglets doivent être nommés comme « Novembre2025 ».',
+  'import.error.read': 'Le fichier n’a pas pu être lu. Vérifiez qu’il n’est pas endommagé.',
+  'import.error.notJson': 'Ce fichier n’est pas un JSON valide.',
+  'import.error.notExport': 'Ce JSON n’est pas une sauvegarde de l’application.',
+  'import.error.tooNew':
+    'Cette sauvegarde vient d’une version plus récente de l’application. Mettez l’application à jour puis réessayez.',
+  'import.error.migration':
+    'La conversion de cette ancienne sauvegarde a échoué. Aucune donnée n’a été modifiée.',
+  'import.error.invalidData':
+    'La sauvegarde contient des données invalides. Aucune donnée n’a été modifiée.',
+  'import.password.title': 'Sauvegarde chiffrée',
+  'import.password.label': 'Mot de passe de la sauvegarde',
+  'import.password.wrong': 'Mot de passe incorrect, ou fichier endommagé.',
+  'import.password.decrypt': 'Déchiffrer',
+  'import.preview.title': 'Aperçu de {file}',
+  'import.preview.operations': 'Opérations',
+  'import.preview.period': 'Période',
+  'import.preview.income': 'Revenus',
+  'import.preview.expense': 'Dépenses',
+  'import.preview.rejected': 'Lignes ignorées',
+  'import.preview.duplicates': 'Doublons possibles',
+  'import.controls.title': 'Contrôle des soldes du classeur',
+  'import.controls.intro':
+    'Le solde de chaque mois est recalculé à partir des opérations (report inclus) et comparé à la cellule F2 « Budget restant ».',
+  'import.controls.allMatch': 'Aucun écart',
+  'import.controls.mismatch': '{count, plural, one {# écart} other {# écarts}}',
+  'import.controls.ok': 'Identique',
+  'import.options': 'Options d’import',
+  'import.mode.label': 'Données existantes',
+  'import.mode.merge': 'Fusionner',
+  'import.mode.replace': 'Remplacer',
+  'import.mode.mergeHint':
+    'Les opérations s’ajoutent à celles déjà présentes. Les doublons possibles sont listés ci-dessous.',
+  'import.mode.replaceHint':
+    'Les opérations existantes sont supprimées et remplacées. Catégories, comptes et budgets sont conservés. Une sauvegarde automatique est faite avant.',
+  'import.account': 'Compte de destination',
+  'import.opening':
+    'Utiliser le solde initial du classeur ({amount}, cellule G2 du premier mois) comme solde d’ouverture du compte',
+  'import.categories': 'Catégories',
+  'import.categoryNew': 'nouvelle',
+  'import.duplicates.title':
+    '{count, plural, one {# doublon possible} other {# doublons possibles}}',
+  'import.duplicates.intro':
+    'Même date, même montant, même libellé et même compte qu’une opération existante. Cochez celles à importer quand même.',
+  'import.duplicates.skipAll': 'Ignorer tous',
+  'import.duplicates.keepAll': 'Importer tous',
+  'import.duplicates.existing':
+    '{count, plural, one {# opération identique existe déjà} other {# opérations identiques existent déjà}}',
+  'import.issues': 'Lignes ignorées et avertissements',
+  'import.rejectedBadge': 'Ignorée',
+  'import.warningBadge': 'À vérifier',
+  'import.summary':
+    '{count, plural, =0 {Aucune opération à importer} one {# opération sera importée} other {# opérations seront importées}}. Une sauvegarde automatique est faite avant l’écriture.',
+  'import.confirm': 'Importer {count, plural, one {# opération} other {# opérations}}',
+  'import.success': '{count, plural, one {# opération importée} other {# opérations importées}}',
+  'import.undone': 'Import annulé.',
+  'import.json.title': 'Sauvegarde {file}',
+  'import.json.exportedAt': 'Exportée le',
+  'import.json.version': 'Version',
+  'import.json.categories': 'Catégories',
+  'import.json.accounts': 'Comptes',
+  'import.json.budgets': 'Enveloppes',
+  'import.json.migrated':
+    'Sauvegarde au format v{from}, convertie automatiquement au format actuel.',
+  'import.json.checksumOk': 'Somme de contrôle vérifiée',
+  'import.json.acceptChecksum': 'Importer quand même ce fichier modifié',
+  'import.json.replaceHint':
+    'Toutes les données actuelles ({count, plural, one {# opération} other {# opérations}}) sont remplacées par celles de la sauvegarde. Une sauvegarde automatique est faite avant.',
+  'import.json.mergeHint':
+    'Les éléments sont fusionnés par identifiant ; en cas de conflit, la version modifiée le plus récemment est conservée.',
+  'import.json.restore': 'Restaurer la sauvegarde',
+  'import.json.merge': 'Fusionner la sauvegarde',
+  'import.done.title':
+    '{count, plural, one {# opération importée} other {# opérations importées}}.',
+  'import.done.report': 'Télécharger le rapport d’import',
+  'import.done.undo': 'Annuler cet import',
+  'import.done.dashboard': 'Voir le tableau de bord',
+  'import.done.another': 'Importer un autre fichier',
+  'import.done.groupsTitle':
+    '{count, plural, one {# libellé écrit de plusieurs façons} other {# libellés écrits de plusieurs façons}}',
+  'import.done.groupsText':
+    'Par exemple « Café » et « café ». Les unifier rend les statistiques par libellé justes et crée des règles pour les prochaines saisies.',
+  'import.done.groupsAction': 'Regrouper les libellés',
+  'import.done.trackerTitle': 'Suivre le poste « {term} »',
+  'import.done.trackerText':
+    'Votre classeur calculait « {term} » à part (cellule {cell}). Un tag et une règle « contient {term} » le remplacent, avec une analyse sur 12 mois.',
+  'import.done.trackerAction': 'Créer le tag #{term} et la règle',
+  'import.done.trackerRule': 'Tag {term}',
+  'import.done.trackerCreated': 'Tag #{term} créé et appliqué.',
+
+  // CSV mapping
+  'mapping.title': 'Colonnes du relevé',
+  'mapping.intro':
+    'Indiquez quelle colonne contient chaque information. Ce choix est mémorisé pour les prochains relevés de cette banque.',
+  'mapping.preview': 'Aperçu du fichier',
+  'mapping.none': 'Aucune',
+  'mapping.column': 'Colonne {n}',
+  'mapping.date': 'Date',
+  'mapping.dateFormat': 'Format de date',
+  'mapping.amountMode': 'Montant',
+  'mapping.amountSingle': 'Une colonne signée',
+  'mapping.amountDebitCredit': 'Colonnes débit et crédit',
+  'mapping.amount': 'Colonne du montant',
+  'mapping.debit': 'Colonne débit',
+  'mapping.credit': 'Colonne crédit',
+  'mapping.decimal': 'Séparateur décimal',
+  'mapping.decimalComma': 'Virgule (12,50)',
+  'mapping.decimalPoint': 'Point (12.50)',
+  'mapping.label': 'Libellé',
+  'mapping.category': 'Catégorie',
+  'mapping.note': 'Note',
+  'mapping.invert': 'Inverser le signe des montants',
+  'mapping.remembered': 'Correspondance mémorisée par en-têtes de colonnes.',
+  'mapping.continue': 'Continuer',
+
+  // Import report & warnings
+  'report.title': 'Rapport d’import',
+  'report.file': 'Fichier',
+  'report.fileHash': 'Empreinte SHA-256',
+  'report.date': 'Date',
+  'report.mode': 'Mode',
+  'report.imported': 'Opérations importées',
+  'report.duplicatesSkipped': 'Doublons ignorés',
+  'report.rejected': 'Lignes ignorées',
+  'report.periods': 'Période',
+  'report.income': 'Revenus',
+  'report.expense': 'Dépenses',
+  'report.opening': 'Solde initial (G2)',
+  'report.controls': 'Contrôle des soldes (F2)',
+  'report.col.sheet': 'Onglet',
+  'report.col.rows': 'Opérations',
+  'report.col.opening': 'Report recalculé',
+  'report.col.computed': 'Solde recalculé',
+  'report.col.f2': 'F2 du classeur',
+  'report.col.difference': 'Écart',
+  'report.col.where': 'Emplacement',
+  'report.col.reason': 'Motif',
+  'report.col.content': 'Contenu',
+  'report.categoriesCreated': 'Catégories créées',
+  'report.categories': 'Répartition par catégorie',
+  'report.warnings': 'Avertissements',
+  'report.rejectedLines': 'Lignes ignorées',
+  'report.sourceSheet': '{sheet}, ligne {row}',
+  'report.sourceLine': 'Ligne {row}',
+  'reject.noAmount': 'Ligne sans montant',
+  'reject.invalidAmount': 'Montant illisible',
+  'reject.zeroAmount': 'Montant nul',
+  'reject.invalidDate': 'Date illisible',
+  'reject.unparsableRow': 'Ligne illisible',
+  'reject.formulaNotEvaluable': 'Formule non calculable (référence à d’autres cellules)',
+  'warning.carryBreak':
+    '{sheet} : le report G2 ({g2}) ne correspond pas au solde F2 de {previousSheet} ({previousF2}).',
+  'warning.carryTyped':
+    '{sheet} : report G2 saisi à la main ({g2}) après {missing, plural, one {# mois manquant} other {# mois manquants}} depuis {previousSheet}. Le report est désormais calculé.',
+  'warning.controlMismatch':
+    '{sheet} : solde recalculé {computed}, F2 du classeur {cell} (écart {difference}).',
+  'warning.missingPeriods':
+    '{count, plural, one {Mois absent du classeur} other {Mois absents du classeur}} : {periods}.',
+  'warning.dateFarFromPeriod':
+    'Date {date} éloignée du mois de l’onglet ({period}) : faute de frappe probable. Opération conservée dans {period}.',
+  'warning.previousMonthDates':
+    '{sheet} : {count, plural, one {# opération datée} other {# opérations datées}} du mois précédent, rattachées au mois de l’onglet. Le réglage « Premier jour du mois budgétaire » peut le reproduire.',
+  'warning.sheetIgnored': 'Onglet « {sheet} » ignoré (nom différent de MoisAAAA).',
+  'warning.headerVariant':
+    'En-têtes différents de « Date, Montant, Type de dépense, Libellé » : colonnes A à D lues quand même.',
+  'warning.missingCategory': 'Type de dépense vide : opération classée « À classer ».',
+  'warning.missingDate': 'Date absente ou illisible ({value}) : opération importée sans date.',
+  'warning.formulaEvaluated': 'Formule sans valeur calculée : calcul refait à l’import.',
+  'warning.checksumMismatch':
+    'La somme de contrôle ne correspond pas : le fichier a été modifié après l’export.',
+
+  // Export
+  'export.done': 'Sauvegarde exportée ({count, plural, one {# opération} other {# opérations}}).',
+  'export.encryptedDone': 'Sauvegarde chiffrée exportée.',
+  'export.nothing': 'Aucune opération à exporter.',
+  'export.tableDone': '{count, plural, one {# opération exportée} other {# opérations exportées}}.',
+
+  // Settings
+  'settings.title': 'Paramètres',
+  'settings.back': 'Paramètres',
+  'settings.saved': 'Modification enregistrée.',
+  'settings.general': 'Général',
+  'settings.general.description': 'Langue, devise, thème, mois budgétaire',
+  'settings.categories': 'Catégories',
+  'settings.categories.description': 'Créer, renommer, réorganiser',
+  'settings.accounts': 'Comptes',
+  'settings.accounts.description': 'Courant, livret, espèces, carte prépayée',
+  'settings.tags': 'Tags',
+  'settings.tags.description': 'Suivre un poste transversal',
+  'settings.rules': 'Règles automatiques',
+  'settings.rules.description': 'Catégoriser et normaliser les libellés',
+  'settings.labels': 'Regrouper les libellés',
+  'settings.labels.description': 'Unifier « Café » et « café »',
+  'settings.recurrences': 'Récurrences',
+  'settings.recurrences.description': 'Loyer, abonnements, salaire',
+  'settings.goals': 'Objectifs d’épargne',
+  'settings.goals.description': 'Montant cible et échéance',
+  'settings.data': 'Import et export',
+  'settings.data.description': 'Sauvegarde JSON, chiffrée, CSV, Excel',
+  'settings.backups': 'Sauvegardes automatiques',
+  'settings.backups.description': 'Restaurer un état précédent',
+  'settings.trash': 'Corbeille',
+  'settings.trash.description': 'Opérations supprimées (30 jours)',
+  'settings.storage': 'Stockage',
+  'settings.storage.description': 'Espace utilisé et persistance',
+  'settings.privacy': 'Confidentialité',
+  'settings.privacy.description': 'Où sont vos données',
+  'settings.help': 'Guide',
+  'settings.help.description': 'Prise en main et raccourcis',
+  'settings.about': 'À propos',
+  'settings.about.description': 'Version, licence, journal d’erreurs',
+  'settings.danger': 'Réinitialisation',
+  'settings.danger.description': 'Repartir de zéro',
+  'settings.display': 'Affichage',
+  'settings.language': 'Langue',
+  'settings.theme': 'Thème',
+  'settings.theme.system': 'Comme le système',
+  'settings.theme.light': 'Clair',
+  'settings.theme.dark': 'Sombre',
+  'settings.currency': 'Devise',
+  'settings.currencyHint': 'Utilisée pour les nouvelles opérations et l’affichage des montants.',
+  'settings.dateFormat': 'Format de date',
+  'settings.dateFormat.locale': 'Selon la langue ({example})',
+  'settings.budgetSection': 'Mois budgétaire',
+  'settings.startDay': 'Premier jour du mois budgétaire',
+  'settings.startDayHelpLabel': 'Aide sur le mois budgétaire',
+  'settings.startDayHelp':
+    'Si votre salaire arrive le 26, choisissez le 26 : une opération du 30 octobre comptera alors dans le budget de novembre, comme dans votre classeur.',
+  'settings.startDayHint':
+    'Le mois budgétaire porte le nom du mois où il se termine (exemple : {example}).',
+  'settings.startDay.first': 'Le 1er (mois civil)',
+  'settings.startDay.nth': 'Le {day}',
+  'settings.autoRenew': 'Reconduire les enveloppes',
+  'settings.autoRenewHint': 'Un mois sans enveloppe reprend celles du dernier mois défini.',
+  'settings.backupSection': 'Sauvegarde',
+  'settings.backupReminder': 'Rappel de sauvegarde (jours)',
+  'settings.backupReminderHint':
+    'Rappel sur le tableau de bord quand la dernière sauvegarde exportée est plus ancienne. 0 désactive le rappel.',
+
+  // Categories
+  'categories.intro':
+    'Les catégories classent vos opérations. Une sous-catégorie est comptée dans sa catégorie parente.',
+  'categories.add': 'Nouvelle catégorie',
+  'categories.addTitle': 'Nouvelle catégorie',
+  'categories.editTitle': 'Modifier la catégorie',
+  'categories.expense': 'Dépenses',
+  'categories.income': 'Revenus',
+  'categories.count':
+    '{count, plural, =0 {Aucune opération} one {# opération} other {# opérations}}',
+  'categories.archived': 'Archivée',
+  'categories.archive': 'Archiver « {name} »',
+  'categories.unarchive': 'Désarchiver « {name} »',
+  'categories.moveUp': 'Monter « {name} »',
+  'categories.moveDown': 'Descendre « {name} »',
+  'categories.name': 'Nom',
+  'categories.kind': 'Type',
+  'categories.parent': 'Catégorie parente',
+  'categories.noParent': 'Aucune (catégorie principale)',
+  'categories.color': 'Couleur',
+  'categories.colorN': 'Couleur {n}',
+  'categories.icon': 'Icône',
+  'categories.error.name': 'Saisissez un nom.',
+  'categories.error.kind':
+    'Le type ne peut pas changer : des opérations utilisent cette catégorie.',
+  'categories.error.cycle':
+    'Une catégorie ne peut pas être rangée dans l’une de ses sous-catégories.',
+  'categories.error.reassign': 'Choisissez une catégorie de remplacement.',
+  'categories.deleteTitle': 'Supprimer « {name} » ?',
+  'categories.deleteReassign':
+    '{count, plural, one {# opération utilise} other {# opérations utilisent}} cette catégorie. Choisissez où {count, plural, one {la} other {les}} déplacer.',
+  'categories.deleteEmpty': 'Aucune opération n’utilise cette catégorie.',
+  'categories.reassignTo': 'Déplacer vers',
+  'categories.chooseCategory': 'Choisir une catégorie',
+  'categories.deleted': 'Catégorie supprimée.',
+
+  // Accounts
+  'accounts.intro':
+    'Un compte par support d’argent : compte courant, livret, espèces, carte prépayée (Izly…). Un virement entre deux comptes n’est ni une dépense ni un revenu.',
+  'accounts.add': 'Nouveau compte',
+  'accounts.addTitle': 'Nouveau compte',
+  'accounts.editTitle': 'Modifier le compte',
+  'accounts.name': 'Nom',
+  'accounts.typeLabel': 'Type',
+  'accounts.type.checking': 'Compte courant',
+  'accounts.type.savings': 'Épargne',
+  'accounts.type.cash': 'Espèces',
+  'accounts.type.prepaid': 'Carte prépayée',
+  'accounts.opening': 'solde initial {amount}',
+  'accounts.openingLabel': 'Solde initial',
+  'accounts.openingHint': 'Montant présent sur le compte avant la première opération saisie.',
+  'accounts.openingDate': 'Date du solde initial',
+  'accounts.default': 'Par défaut',
+  'accounts.makeDefault': 'Utiliser « {name} » par défaut',
+  'accounts.transferHint':
+    'Pour recharger une carte prépayée, saisissez un virement du compte courant vers la carte, puis les dépenses depuis la carte.',
+  'accounts.deleteTitle': 'Supprimer ce compte ?',
+  'accounts.deleteText': 'Seul un compte sans opération peut être supprimé. Sinon, archivez-le.',
+  'accounts.error.inUse': 'Ce compte contient des opérations : archivez-le plutôt.',
+  'accounts.error.last': 'Il faut au moins un compte.',
+
+  // Tags
+  'tags.intro':
+    'Un tag suit un poste qui traverse les catégories : café, voyage, une ville. Une opération peut avoir plusieurs tags.',
+  'tags.name': 'Nom du tag',
+  'tags.add': 'Créer',
+  'tags.exists': 'Ce tag existe déjà.',
+  'tags.empty': 'Aucun tag.',
+  'tags.stats':
+    '{count, plural, =0 {Aucune opération} one {# opération} other {# opérations}} · {total}',
+  'tags.analyse': 'Analyser',
+  'tags.deleteTitle': 'Supprimer ce tag ?',
+  'tags.deleteText': 'Le tag est retiré des opérations et des règles. Les opérations restent.',
+
+  // Rules
+  'rules.intro':
+    'Une règle reconnaît un libellé et applique une catégorie, un libellé normalisé ou des tags, à la saisie et à l’import. La première règle qui correspond l’emporte.',
+  'rules.add': 'Nouvelle règle',
+  'rules.addTitle': 'Nouvelle règle',
+  'rules.editTitle': 'Modifier la règle',
+  'rules.empty': 'Aucune règle.',
+  'rules.disabled': 'Désactivée',
+  'rules.name': 'Nom',
+  'rules.matchType': 'Condition sur le libellé',
+  'rules.match.contains': 'contient',
+  'rules.match.equals': 'est égal à',
+  'rules.match.startsWith': 'commence par',
+  'rules.match.regex': 'expression régulière',
+  'rules.pattern': 'Texte recherché',
+  'rules.patternHint': 'Sans tenir compte des majuscules, des accents ni de la ponctuation.',
+  'rules.patternRegexHint': 'Expression régulière JavaScript, sans tenir compte des majuscules.',
+  'rules.error.pattern': 'Saisissez le texte recherché.',
+  'rules.error.regex.invalid': 'Expression régulière invalide.',
+  'rules.error.regex.tooLong': 'Expression trop longue (200 caractères maximum).',
+  'rules.error.regex.unsafe': 'Expression trop coûteuse à évaluer (quantificateurs imbriqués).',
+  'rules.error.action': 'Choisissez au moins une action.',
+  'rules.actions': 'Actions',
+  'rules.setCategory': 'Catégorie',
+  'rules.noChange': 'Ne pas changer',
+  'rules.setLabel': 'Libellé normalisé',
+  'rules.enabled': 'Règle active',
+  'rules.preview':
+    '{count, plural, =0 {Aucune opération existante concernée} one {# opération existante concernée} other {# opérations existantes concernées}}',
+  'rules.previewEmpty': 'Aucune opération existante ne serait modifiée.',
+  'rules.saveApply':
+    'Enregistrer et appliquer à {count, plural, one {# opération} other {# opérations}}',
+  'rules.applied': 'Règle appliquée à {count, plural, one {# opération} other {# opérations}}.',
+  'rules.deleteTitle': 'Supprimer cette règle ?',
+  'rules.deleteText': 'Les opérations déjà modifiées par la règle restent inchangées.',
+
+  // Labels grouping
+  'labels.intro':
+    'Ces libellés ne diffèrent que par les majuscules, les accents ou la ponctuation. Choisissez l’écriture à garder : les opérations sont unifiées et une règle s’applique aux prochaines saisies.',
+  'labels.none': 'Aucun libellé à regrouper.',
+  'labels.include': 'Unifier « {label} »',
+  'labels.groupTitle': '{total, plural, one {# opération} other {# opérations}}',
+  'labels.unify': 'Unifier {count, plural, one {# groupe} other {# groupes}}',
+  'labels.ruleName': 'Libellé « {label} »',
+  'labels.done':
+    '{count, plural, one {# libellé unifié} other {# libellés unifiés}}, {groups, plural, one {# règle créée} other {# règles créées}}.',
+
+  // Recurrences
+  'recurrences.intro':
+    'Loyer, abonnements, assurance, salaire : chaque échéance est créée « prévue » et se valide en un clic depuis le tableau de bord (ou automatiquement).',
+  'recurrences.add': 'Nouvelle récurrence',
+  'recurrences.addTitle': 'Nouvelle récurrence',
+  'recurrences.editTitle': 'Modifier la récurrence',
+  'recurrences.generate': 'Générer les échéances',
+  'recurrences.generated':
+    '{count, plural, =0 {Aucune nouvelle échéance} one {# échéance créée} other {# échéances créées}}.',
+  'recurrences.empty': 'Aucune récurrence.',
+  'recurrences.undated': 'charge sans date',
+  'recurrences.next': 'prochaine le {date}',
+  'recurrences.finished': 'terminée',
+  'recurrences.paused': 'En pause',
+  'recurrences.auto': 'Validation automatique',
+  'recurrences.pause': 'Mettre « {name} » en pause',
+  'recurrences.resume': 'Reprendre « {name} »',
+  'recurrences.deleteTitle': 'Supprimer « {name} » ?',
+  'recurrences.deletePlanned': 'Supprimer aussi les échéances prévues non validées',
+  'recurrences.name': 'Nom',
+  'recurrences.namePlaceholder': 'Loyer, Netflix…',
+  'recurrences.frequency': 'Fréquence',
+  'recurrences.every': 'Tous les',
+  'recurrences.unit': 'Unité',
+  'recurrences.unit.DAILY': 'jours',
+  'recurrences.unit.WEEKLY': 'semaines',
+  'recurrences.unit.MONTHLY': 'mois',
+  'recurrences.unit.YEARLY': 'ans',
+  'recurrences.start': 'Première échéance',
+  'recurrences.end': 'Fin',
+  'recurrences.end.never': 'Jamais',
+  'recurrences.end.until': 'À une date',
+  'recurrences.end.count': 'Après un nombre d’échéances',
+  'recurrences.untilDate': 'Date de fin',
+  'recurrences.countLabel': 'Nombre d’échéances',
+  'recurrences.error.interval': 'Saisissez un nombre entier positif.',
+  'recurrences.undatedLabel': 'Charge sans date',
+  'recurrences.undatedHint':
+    'Comme « Aucune » dans le classeur : rattachée au mois, en tête de liste.',
+  'recurrences.autoConfirm': 'Valider automatiquement',
+  'recurrences.autoConfirmHint':
+    'L’échéance compte dans les soldes dès sa date, sans action de votre part.',
+  'recurrence.every.DAILY': '{n, plural, one {Chaque jour} other {Tous les # jours}}',
+  'recurrence.every.WEEKLY': '{n, plural, one {Chaque semaine} other {Toutes les # semaines}}',
+  'recurrence.every.MONTHLY': '{n, plural, one {Chaque mois} other {Tous les # mois}}',
+  'recurrence.every.YEARLY': '{n, plural, one {Chaque année} other {Tous les # ans}}',
+
+  // Goals
+  'goals.intro':
+    'Un objectif suit le solde d’un compte d’épargne (ou de tous vos comptes d’épargne) vers un montant cible.',
+  'goals.add': 'Nouvel objectif',
+  'goals.addTitle': 'Nouvel objectif',
+  'goals.editTitle': 'Modifier l’objectif',
+  'goals.empty': 'Aucun objectif.',
+  'goals.name': 'Nom',
+  'goals.target': 'Montant cible',
+  'goals.dueDate': 'Échéance',
+  'goals.account': 'Compte suivi',
+  'goals.accountHint': 'Alimentez l’objectif par des virements vers ce compte.',
+  'goals.allSavings': 'Tous les comptes d’épargne',
+  'goals.due': 'échéance {date}',
+  'goals.reached': 'Objectif atteint',
+  'goals.effort':
+    'À mettre de côté : {amount} par mois pendant {months, plural, =0 {moins d’un mois} one {# mois} other {# mois}}',
+  'goals.deleteTitle': 'Supprimer l’objectif « {name} » ?',
+
+  // Data
+  'data.backupTitle': 'Sauvegarde complète',
+  'data.backupText':
+    'Le fichier JSON contient toutes vos données (opérations, catégories, comptes, budgets, règles, récurrences). Réimporté dans un autre navigateur, il restitue des données identiques.',
+  'data.lastBackup': 'Dernière sauvegarde exportée : {date}',
+  'data.neverBackedUp': 'Aucune sauvegarde exportée pour l’instant.',
+  'data.exportJson': 'Exporter la sauvegarde (JSON)',
+  'data.import': 'Importer un fichier',
+  'data.tableTitle': 'Export pour tableur',
+  'data.tableText':
+    'CSV (séparateur point-virgule, UTF-8) ou Excel avec trois onglets : opérations, récapitulatif mensuel, catégories.',
+  'data.exportCsv': 'Exporter en CSV',
+  'data.exportXlsx': 'Exporter en Excel',
+  'data.historyTitle': 'Historique des imports',
+  'data.historyEmpty': 'Aucun import.',
+  'data.historyCount': '{count, plural, one {# opération} other {# opérations}}',
+  'data.undone': 'Annulé',
+
+  // Security
+  'security.title': 'Sauvegarde chiffrée',
+  'security.text':
+    'Pour un cloud ou une clé USB : le fichier .finances.enc est chiffré (AES-GCM 256 bits) avec une clé dérivée de votre mot de passe. Sans le mot de passe, il est illisible.',
+  'security.password': 'Mot de passe',
+  'security.confirm': 'Confirmer le mot de passe',
+  'security.strength': 'Robustesse : {level}',
+  'security.strength.0': 'très faible',
+  'security.strength.1': 'faible',
+  'security.strength.2': 'moyenne',
+  'security.strength.3': 'bonne',
+  'security.strength.4': 'excellente',
+  'security.error.short': 'Au moins {min} caractères.',
+  'security.error.mismatch': 'Les deux mots de passe sont différents.',
+  'security.warning':
+    'Mot de passe perdu = sauvegarde irrécupérable. Il n’est conservé nulle part.',
+  'security.export': 'Exporter la sauvegarde chiffrée',
+
+  // Backups
+  'backups.intro':
+    'Une sauvegarde locale est créée avant chaque import, restauration, migration et réinitialisation. Les 5 plus récentes sont conservées dans ce navigateur.',
+  'backups.create': 'Créer une sauvegarde maintenant',
+  'backups.created': 'Sauvegarde créée.',
+  'backups.empty': 'Aucune sauvegarde automatique.',
+  'backups.download': 'Télécharger',
+  'backups.restore': 'Restaurer',
+  'backups.restoreTitle': 'Restaurer cette sauvegarde ?',
+  'backups.restoreText':
+    'Les données actuelles sont remplacées par celles du {date}. L’état actuel est sauvegardé avant.',
+  'backups.restored': 'Sauvegarde restaurée.',
+  'backups.reason.import': 'Avant import',
+  'backups.reason.migration': 'Avant mise à niveau',
+  'backups.reason.restore': 'Avant restauration',
+  'backups.reason.reset': 'Avant réinitialisation',
+  'backups.reason.manual': 'Manuelle',
+  'backups.reason.undoImport': 'Avant annulation d’import',
+
+  // Trash
+  'trash.intro':
+    'Les opérations supprimées restent ici {days} jours, puis sont effacées définitivement.',
+  'trash.none': 'La corbeille est vide.',
+  'trash.restore': 'Restaurer',
+  'trash.restoreAll': 'Tout restaurer',
+  'trash.empty': 'Vider la corbeille',
+  'trash.emptyTitle': 'Vider la corbeille ?',
+  'trash.emptyText':
+    '{count, plural, one {# opération sera effacée} other {# opérations seront effacées}} définitivement.',
+  'trash.deletedOn': 'supprimée le {date}',
+
+  // Storage
+  'storage.usage': 'Espace utilisé',
+  'storage.used': '{used} utilisés sur {quota} disponibles ({percent})',
+  'storage.unknown': 'Ce navigateur n’indique pas l’espace disponible.',
+  'storage.counts':
+    '{operations, plural, one {# opération} other {# opérations}}, {trash, plural, =0 {corbeille vide} one {# dans la corbeille} other {# dans la corbeille}}.',
+  'storage.persistence': 'Stockage persistant',
+  'storage.persisted': 'Persistant : le navigateur ne l’efface pas automatiquement',
+  'storage.notPersisted': 'Non persistant : le navigateur peut l’effacer en cas de manque de place',
+  'storage.explain':
+    'Même persistant, le stockage disparaît en navigation privée ou si vous effacez les données du site. Exportez une sauvegarde régulièrement.',
+  'storage.request': 'Demander le stockage persistant',
+
+  // Privacy
+  'privacy.whereTitle': 'Où sont vos données',
+  'privacy.where':
+    'Toutes vos données sont enregistrées dans ce navigateur (IndexedDB), sur cet appareil.',
+  'privacy.noServer':
+    'Aucun compte, aucun serveur, aucun cookie, aucune mesure d’audience. Le site ne télécharge que le code de l’application ; aucune donnée personnelle ne circule sur le réseau.',
+  'privacy.purge':
+    'Le navigateur peut effacer ces données (navigation privée, nettoyage, manque de place) : seule une sauvegarde exportée les protège.',
+  'privacy.exportTitle': 'Récupérer vos données',
+  'privacy.export':
+    'Paramètres › Import et export : sauvegarde JSON complète, chiffrée, ou export CSV / Excel. Vous en gardez la propriété totale.',
+  'privacy.eraseTitle': 'Effacer toutes mes données',
+  'privacy.erase':
+    'Supprime définitivement la base de données, les sauvegardes automatiques, le cache et le service worker de ce navigateur.',
+  'privacy.eraseButton': 'Effacer toutes mes données',
+  'privacy.exportFirstTitle': 'Exporter avant d’effacer ?',
+  'privacy.exportFirstText':
+    'Une sauvegarde exportée est le seul moyen de récupérer vos données ensuite.',
+  'privacy.exportFirst': 'Exporter la sauvegarde',
+  'privacy.skipExport': 'Continuer sans exporter',
+  'privacy.confirmTitle': 'Effacer définitivement ?',
+  'privacy.confirmText': 'Cette action est irréversible.',
+  'privacy.confirmWord': 'EFFACER',
+
+  // Danger zone
+  'danger.resetTitle': 'Réinitialiser l’application',
+  'danger.resetText':
+    'Supprime opérations, budgets, règles, récurrences et objectifs, et rétablit les catégories par défaut. Une sauvegarde automatique est conservée et restaurable.',
+  'danger.reset': 'Réinitialiser',
+  'danger.confirmTitle': 'Réinitialiser toutes les données ?',
+  'danger.confirmText': 'Les données actuelles seront remplacées par une application vierge.',
+  'danger.confirmWord': 'RÉINITIALISER',
+  'danger.resetDone':
+    'Application réinitialisée. La sauvegarde précédente est dans Paramètres › Sauvegardes automatiques.',
+
+  // About
+  'about.version': 'Version',
+  'about.schema': 'Format des données',
+  'about.created': 'Données créées le',
+  'about.license': 'Licence',
+  'about.text':
+    'Application local-first : tout fonctionne hors ligne, aucune donnée ne quitte l’appareil sans action de votre part.',
+  'about.errorsTitle': 'Journal d’erreurs',
+  'about.errorsText':
+    '{count, plural, =0 {Aucune erreur enregistrée.} one {# erreur enregistrée.} other {# erreurs enregistrées.}} Le journal reste sur cet appareil et ne contient aucun montant.',
+  'about.errorsExport': 'Exporter le journal',
+  'about.errorsClear': 'Vider le journal',
+
+  // Help
+  'help.start.title': 'Démarrer',
+  'help.start.1':
+    'Importez votre classeur Finances.xlsm (Paramètres › Import et export, ou le bouton du tableau de bord) : chaque onglet mensuel devient un mois, et le solde recalculé de chaque mois est comparé à la cellule F2.',
+  'help.start.2':
+    'Le tableau de bord montre le mois en cours : reste du budget, revenus, dépenses, répartition par catégorie et dernières opérations. Les flèches ou un balayage changent de mois.',
+  'help.start.3':
+    'Sur téléphone, ajoutez l’application à l’écran d’accueil depuis le menu du navigateur : elle fonctionne alors hors ligne, comme une application installée.',
+  'help.entry.title': 'Saisir',
+  'help.entry.1':
+    'Le bouton « Ajouter » (ou la touche N) ouvre la saisie. Le montant vient en premier ; tapez un calcul si besoin : 12,5+3, 6x15, -(10+5,3).',
+  'help.entry.2':
+    'Le libellé propose les libellés déjà utilisés avec leur catégorie habituelle. Entrée enregistre ; « Enregistrer et nouveau » enchaîne les saisies.',
+  'help.entry.3':
+    '« Sans date » rattache une charge fixe au mois (loyer, abonnement), comme « Aucune » dans le classeur. Elle s’affiche en tête du mois.',
+  'help.entry.4': 'Un brouillon est conservé si l’onglet se ferme pendant la saisie.',
+  'help.operations.title': 'Opérations',
+  'help.operations.1':
+    'Chaque ligne a son menu : modifier, dupliquer, supprimer. Sur téléphone, balayez vers la gauche pour supprimer, vers la droite pour dupliquer.',
+  'help.operations.2':
+    'Une suppression se rattrape pendant 10 secondes avec « Annuler », puis depuis la corbeille pendant 30 jours. Deux opérations identiques ne sont jamais supprimées ensemble.',
+  'help.operations.3':
+    'Filtres et recherche se combinent ; le total de la sélection s’affiche en haut de la liste. Le mode sélection permet de supprimer ou reclasser plusieurs opérations.',
+  'help.budget.title': 'Budget',
+  'help.budget.1':
+    'Fixez une enveloppe globale ou par catégorie. Les jauges passent en alerte à 80 % puis à 100 %.',
+  'help.budget.2':
+    'Le report ajoute le reste du mois précédent à l’enveloppe ; le solde reporté du classeur (F2 = G2 + total du mois) est calculé automatiquement, sans recopie.',
+  'help.budget.3':
+    'Si vos revenus arrivent en fin de mois, réglez le premier jour du mois budgétaire dans Paramètres › Général.',
+  'help.import.title': 'Importer',
+  'help.import.1':
+    'Formats : classeur .xlsm/.xlsx, sauvegarde .json ou chiffrée .enc, relevés bancaires .csv, .ofx, .qif. Le fichier est lu dans le navigateur.',
+  'help.import.2':
+    'Avant l’écriture, un aperçu liste les doublons possibles, les lignes ignorées et les écarts de solde. Vous choisissez de fusionner ou de remplacer.',
+  'help.import.3': 'Chaque import est annulable et produit un rapport téléchargeable.',
+  'help.backup.title': 'Sauvegarder',
+  'help.backup.1':
+    'Vos données ne vivent que dans ce navigateur. Exportez une sauvegarde JSON régulièrement : un rappel apparaît après 30 jours.',
+  'help.backup.2':
+    'Pour passer du téléphone à l’ordinateur, exportez sur l’un et importez sur l’autre (mode « Remplacer »).',
+  'help.backup.3':
+    'La sauvegarde chiffrée protège le fichier par mot de passe pour le stocker sur un cloud.',
+  'help.shortcuts.title': 'Raccourcis',
+  'help.shortcuts.new': 'Nouvelle opération',
+  'help.shortcuts.save': 'Enregistrer la saisie',
+  'help.shortcuts.saveNew': 'Enregistrer et saisir la suivante',
+  'help.shortcuts.close': 'Fermer la fenêtre',
+  'help.shortcuts.edit': 'Modifier l’opération sélectionnée',
+  'help.shortcuts.delete': 'Supprimer l’opération sélectionnée',
+  'help.shortcuts.arrows': 'Changer d’onglet ou de catégorie',
+} as const;
+
+export type MessageId = keyof typeof fr;
