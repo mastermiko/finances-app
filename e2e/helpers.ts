@@ -44,9 +44,14 @@ export async function addExpense(
  */
 export function trackPageErrors(page: Page): string[] {
   const errors: string[] = [];
+  // Route + source location: tells which screen and which file triggered the error.
+  const where = (): string => new URL(page.url()).hash || '#/';
   page.on('console', (message) => {
-    if (message.type() === 'error') errors.push(message.text());
+    if (message.type() !== 'error') return;
+    const { url, lineNumber, columnNumber } = message.location();
+    const source = url ? ` @ ${url.split('/').pop() ?? url}:${lineNumber}:${columnNumber}` : '';
+    errors.push(`${where()} ${message.text()}${source}`);
   });
-  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('pageerror', (error) => errors.push(`${where()} ${error.message}`));
   return errors;
 }

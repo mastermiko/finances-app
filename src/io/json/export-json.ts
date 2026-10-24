@@ -41,21 +41,55 @@ export interface SerializedExport {
   readonly text: string;
 }
 
+/**
+ * Canonical JSON of each top-level entry of `data`, computed once and shared by the
+ * checksum and the file text (50 000 operations: one serialisation instead of two).
+ */
+interface CanonicalSection {
+  readonly key: string;
+  /** One canonical JSON string per entity, for arrays. */
+  readonly items: readonly string[] | null;
+  /** Canonical JSON of the value, for objects. */
+  readonly value: string | null;
+}
+
+function canonicalSections(data: ExportData): CanonicalSection[] {
+  const record = data as unknown as Record<string, unknown>;
+  return Object.keys(record)
+    .sort()
+    .filter((key) => record[key] !== undefined)
+    .map((key) => {
+      const value = record[key];
+      return Array.isArray(value)
+        ? { key, items: value.map(canonicalJson), value: null }
+        : { key, items: null, value: canonicalJson(value) };
+    });
+}
+
+/** Same bytes as canonicalJson(data), rebuilt from the sections. */
+function canonicalDataText(sections: readonly CanonicalSection[]): string {
+  const entries = sections.map(
+    (s) => `${JSON.stringify(s.key)}:${s.items ? `[${s.items.join(',')}]` : (s.value ?? 'null')}`,
+  );
+  return `{${entries.join(',')}}`;
+}
+
 export async function serializeExport(
   data: ExportData,
   appVersion: string,
   exportedAt: string,
 ): Promise<SerializedExport> {
   const normalized = normalizeExportData(data);
+  const sections = canonicalSections(normalized);
   const envelope: ExportEnvelope = {
     format: EXPORT_FORMAT,
     schemaVersion: SCHEMA_VERSION,
     appVersion,
     exportedAt,
-    checksum: await checksumOf(normalized),
+    checksum: `sha256-${await sha256Hex(canonicalDataText(sections))}`,
     data: normalized,
   };
-  return { envelope, text: envelopeToText(envelope) };
+  return { envelope, text: textFromSections(envelope, sections) };
 }
 
 /**
@@ -63,6 +97,10 @@ export async function serializeExport(
  * canonical key order and one entity per line (byte-stable and diff-friendly).
  */
 export function envelopeToText(envelope: ExportEnvelope): string {
+  return textFromSections(envelope, canonicalSections(envelope.data));
+}
+
+function textFromSections(envelope: ExportEnvelope, sections: readonly CanonicalSection[]): string {
   const head = [
     `"format":${JSON.stringify(envelope.format)}`,
     `"schemaVersion":${envelope.schemaVersion}`,
@@ -70,18 +108,14 @@ export function envelopeToText(envelope: ExportEnvelope): string {
     `"exportedAt":${JSON.stringify(envelope.exportedAt)}`,
     `"checksum":${JSON.stringify(envelope.checksum)}`,
   ];
-  const data = envelope.data as unknown as Record<string, unknown>;
-  const sections = Object.keys(data)
-    .sort()
-    .map((key) => {
-      const value = data[key];
-      if (Array.isArray(value)) {
-        const body = value.map((item) => `  ${canonicalJson(item)}`).join(',\n');
-        return `${JSON.stringify(key)}:[${value.length > 0 ? `\n${body}\n` : ''}]`;
-      }
-      return `${JSON.stringify(key)}:${canonicalJson(value)}`;
-    });
-  return `{${head.join(',')},\n"data":{\n${sections.join(',\n')}\n}}\n`;
+  const body = sections.map((s) => {
+    if (s.items) {
+      const lines = s.items.map((item) => `  ${item}`).join(',\n');
+      return `${JSON.stringify(s.key)}:[${s.items.length > 0 ? `\n${lines}\n` : ''}]`;
+    }
+    return `${JSON.stringify(s.key)}:${s.value ?? 'null'}`;
+  });
+  return `{${head.join(',')},\n"data":{\n${body.join(',\n')}\n}}\n`;
 }
 
 /** finances_AAAA-MM-JJ_HHmm.json in local time. */

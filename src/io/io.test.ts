@@ -25,6 +25,7 @@ import {
   passwordStrength,
 } from './crypto/encryption';
 import {
+  checksumOf,
   envelopeToText,
   exportFileName,
   mergeExportData,
@@ -274,6 +275,8 @@ describe('JSON export', () => {
     expect(body(second.text)).toBe(body(first.text));
     expect(second.envelope.checksum).toBe(first.envelope.checksum);
     expect(envelopeToText(first.envelope)).toBe(first.text);
+    // Checksum built from the shared per-entity strings = checksum of the canonical JSON.
+    expect(first.envelope.checksum).toBe(await checksumOf(first.envelope.data));
   });
 
   it('detects tampering, refuses newer versions and invalid content', async () => {
