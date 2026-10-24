@@ -152,6 +152,8 @@ describe('entry form', () => {
     await user.click(within(dialog).getByRole('radio', { name: 'Loisirs' }));
     await user.type(within(dialog).getByRole('textbox', { name: 'Montant' }), '{Enter}');
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+    // The label index is built from saved operations: wait for the first write.
+    await waitFor(async () => expect(await allLiveOperations()).toHaveLength(1));
     dialog = await openEntry();
     await user.type(within(dialog).getByRole('textbox', { name: 'Montant' }), '3');
     const label = within(dialog).getByRole('combobox', { name: /Libellé/ });

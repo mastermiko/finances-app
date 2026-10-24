@@ -149,6 +149,7 @@ export function DashboardPage(): ReactNode {
     return (
       <div className={styles.onboarding}>
         <EmptyState
+          headingLevel={1}
           icon={<PiggyBank />}
           title={<T id="dashboard.welcome.title" />}
           actions={

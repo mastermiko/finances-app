@@ -2,7 +2,10 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended", ":semanticCommits", ":pinAllExceptPeerDependencies"],
   "rangeStrategy": "pin",
-  "lockFileMaintenance": { "enabled": true, "schedule": ["before 6am on monday"] },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on monday"]
+  },
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
@@ -12,7 +15,15 @@
     {
       "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
       "groupName": "react"
+    },
+    {
+      "description": "WebKit 27.2 (Playwright 1.64) signale à tort une violation CSP style-src pour les contrôles de formulaire : https://github.com/microsoft/playwright/issues/43497",
+      "matchPackageNames": ["@playwright/test", "playwright-core"],
+      "allowedVersions": "<1.64.0"
     }
   ],
-  "vulnerabilityAlerts": { "enabled": true, "labels": ["security"] }
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security"]
+  }
 }

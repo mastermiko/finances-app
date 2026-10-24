@@ -9,6 +9,7 @@ import {
 } from 'react';
 import { ArrowDownRight, ArrowLeftRight, ArrowUpRight, Copy, Trash2 } from 'lucide-react';
 import { addDays, addPeriods } from '@/domain/common/civil-date';
+import { labelKey } from '@/domain/common/text';
 import { evaluateAmountExpression } from '@/domain/money/expression';
 import { currencyExponent } from '@/domain/money/money';
 import {
@@ -198,6 +199,10 @@ function EntryFormView(): ReactNode {
           ),
     [labelIndex, form.label, form.kind],
   );
+  // A suggestion identical to what is typed adds nothing and would cover the category grid;
+  // its habitual category is applied on blur instead (applyLabelRules).
+  const typedKey = labelKey(form.label);
+  const listedSuggestions = suggestions.filter((s) => s.key !== typedKey);
 
   const kindCategories = useMemo(() => {
     if (form.kind === 'transfer') return [];
@@ -244,9 +249,7 @@ function EntryFormView(): ReactNode {
       }));
       return;
     }
-    const exact = suggestions.find(
-      (s) => s.key === form.label.trim().toLocaleLowerCase('fr') || s.label === form.label,
-    );
+    const exact = suggestions.find((s) => s.key === labelKey(form.label));
     if (exact?.categoryId && categoriesById.get(exact.categoryId)?.kind === form.kind) {
       setForm((f) => ({ ...f, categoryId: exact.categoryId }));
     }
@@ -532,7 +535,7 @@ function EntryFormView(): ReactNode {
             listLabel={t('entry.suggestions')}
             onValueChange={(label) => update({ label })}
             onBlur={applyLabelRules}
-            options={suggestions.map((s) => {
+            options={listedSuggestions.map((s) => {
               const cat = s.categoryId ? categoriesById.get(s.categoryId) : undefined;
               return {
                 id: s.key.replace(/\s/g, '_'),

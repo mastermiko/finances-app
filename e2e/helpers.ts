@@ -36,6 +36,8 @@ export async function addExpense(
   await dialog.getByRole('radio', { name: category }).check();
   await dialog.getByRole('textbox', { name: 'Montant', exact: true }).press('Enter');
   await expect(dialog).toBeHidden();
+  // The N shortcut is ignored while a <dialog> is still open: wait for the native close.
+  await expect(page.locator('dialog[open]')).toHaveCount(0);
 }
 
 /**

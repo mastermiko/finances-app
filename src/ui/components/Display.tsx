@@ -110,17 +110,21 @@ export function EmptyState({
   children,
   actions,
   centered = false,
+  headingLevel = 2,
 }: {
   readonly icon?: ReactNode;
   readonly title: ReactNode;
   readonly children?: ReactNode;
   readonly actions?: ReactNode;
   readonly centered?: boolean;
+  /** 1 when the empty state is the whole screen (it then carries the page title). */
+  readonly headingLevel?: 1 | 2;
 }): ReactNode {
+  const Heading = headingLevel === 1 ? 'h1' : 'h2';
   return (
     <div className={[styles.empty, centered ? styles.emptyCentered : ''].join(' ')}>
       {icon ? <span className={styles.emptyIcon}>{icon}</span> : null}
-      <h2 className={styles.emptyTitle}>{title}</h2>
+      <Heading className={styles.emptyTitle}>{title}</Heading>
       {children ? <div className={styles.emptyText}>{children}</div> : null}
       {actions ? <div className={styles.emptyActions}>{actions}</div> : null}
     </div>
